@@ -127,7 +127,8 @@ func Send(message string, priority Priority, vars map[string]string) error {
 	if err != nil {
 		return err
 	}
-	rights := syscall.UnixRights(int(file.Fd()))
+	//rights := syscall.UnixRights(int(file.Fd()))
+	rights := nil
 	_, _, err = conn.WriteMsgUnix([]byte{}, rights, socketAddr)
 	if err != nil {
 		return err
